@@ -1,0 +1,64 @@
+.notification-dropdown {
+  width: 350px;
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.notification-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  white-space: normal;
+  padding: 0.75rem 1.5rem;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+}
+
+.notification-item:hover {
+  background-color: #f8f9fa;
+}
+
+.notification-item.unread {
+  border-left-color: #0d6efd;
+  background-color: #f0f7ff;
+}
+
+.notification-item .bi {
+  font-size: 1.25rem;
+  margin-top: 0.25rem;
+}
+
+.notification-item .bi-house-fill {
+  color: #198754;
+}
+
+.notification-item .bi-chat-fill {
+  color: #0dcaf0;
+}
+
+.notification-dropdown {
+  width: 350px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  white-space: normal;
+  padding: 0.5rem 1rem;
+}
+
+.notification-item.unread {
+  background-color: #f8f9fa;
+  border-left: 3px solid #0d6efd;
+}
+
+.notification-item .bi-house-fill {
+  color: #198754;
+}
+
+.notification-item .bi-chat-fill {
+  color: #0dcaf0;
+}

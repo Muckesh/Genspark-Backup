@@ -1,0 +1,170 @@
+<nav class="navbar navbar-expand navbar-light bg-white shadow-sm">
+  <div class="container-fluid">
+    <h5 class="mb-0">RealEstate Finder</h5>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item dropdown">
+        <a 
+          class="nav-link dropdown-toggle" 
+          href="#" 
+          role="button" 
+          (click)="toggleNotifications()"
+          aria-expanded="false"
+        >
+          <i class="bi bi-bell-fill"></i>
+          <span 
+            *ngIf="(unreadCount$ | async) as count; else noCount"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+          >
+            {{ count }}
+          </span>
+          <ng-template #noCount>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none;"></span>
+          </ng-template>
+        </a>
+        
+        <div 
+          class="dropdown-menu dropdown-menu-end notification-dropdown" 
+          [class.show]="showNotifications"
+        >
+          <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
+            <h6 class="mb-0">Notifications</h6>
+            <button 
+              class="btn btn-sm btn-link text-primary" 
+              (click)="markAllAsRead(); $event.stopPropagation()"
+            >
+              Mark all as read
+            </button>
+          </div>
+          
+          <div class="notification-list">
+            <ng-container *ngIf="(notifications$ | async) as notifications">
+              <div 
+                *ngFor="let notification of notifications" 
+                class="dropdown-item notification-item"
+                [class.unread]="!notification.read"
+                (click)="markAsRead(notification.id)"
+              >
+                <div class="d-flex">
+                  <div class="flex-shrink-0 me-2">
+                    <i 
+                      class="bi"
+                      [class.bi-house-fill]="notification.type === 'listing'"
+                      [class.bi-chat-fill]="notification.type === 'inquiry'"
+                    ></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-bold">{{ notification.title }}</div>
+                    <div class="small">{{ notification.message }}</div>
+                    <div class="text-muted small">{{ notification.timestamp | date:'shortTime' }}</div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="notifications.length === 0" class="dropdown-item text-center py-3 text-muted">
+                <i class="bi bi-bell-slash-fill fs-4"></i>
+                <p class="mb-0">No notifications yet</p>
+              </div>
+            </ng-container>
+          </div>
+          
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item text-center" routerLink="/notifications">
+            View all notifications
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar navbar-expand navbar-light bg-white shadow-sm">
+  <div class="container-fluid">
+    <!-- <button class="btn btn-link me-2" (click)="toggleSidebar()">
+      <i class="bi bi-list fs-4"></i>
+    </button> -->
+    <h5 class="mb-0">RealEstate Finder</h5>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          <i class="bi bi-bell-fill"></i>
+          <!-- <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            3
+          </span> -->
+          <span 
+            *ngIf="(unreadCount$ | async) as count; else noCount"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+          >
+            {{ count }}
+          </span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><h6 class="dropdown-header">Notifications</h6></li>
+          <li><a class="dropdown-item" href="#">New inquiry received</a></li>
+          <li><a class="dropdown-item" href="#">New user registered</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">View all</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!--  -->
+
+<nav class="navbar navbar-expand navbar-light bg-white shadow-sm">
+  <div class="container-fluid">
+    <h5 class="mb-0">RealEstate Finder</h5>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          <i class="bi bi-bell-fill"></i>
+          <span 
+            *ngIf="(unreadCount$ | async) as count; else noCount"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+          >
+            {{ count }}
+          </span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end notification-dropdown">
+          <li><h6 class="dropdown-header">Notifications</h6></li>
+          
+          <ng-container *ngIf="(notifications$ | async) as notifications">
+            <!-- Dynamic Notifications -->
+            <li *ngFor="let notification of notifications">
+              <a class="dropdown-item notification-item" 
+                 [class.unread]="!notification.read"
+                 (click)="markAsRead(notification.id)">
+                <div class="d-flex">
+                  <div class="flex-shrink-0 me-2">
+                    <i class="bi"
+                       [class.bi-house-fill]="notification.type === 'listing'"
+                       [class.bi-chat-fill]="notification.type === 'inquiry'"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-bold">{{ notification.title }}</div>
+                    <div class="small">{{ notification.message }}</div>
+                    <div class="text-muted small">{{ notification.timestamp | date:'shortTime' }}</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            
+            <!-- Empty State -->
+            <li *ngIf="notifications.length === 0">
+              <a class="dropdown-item text-center py-3 text-muted">
+                <i class="bi bi-bell-slash-fill fs-4"></i>
+                <p class="mb-0">No notifications yet</p>
+              </a>
+            </li>
+          </ng-container>
+          
+          <li><hr class="dropdown-divider"></li>
+          <li>
+            <div class="d-flex justify-content-between px-3">
+              <a class="dropdown-item" (click)="markAllAsRead()">Mark all as read</a>
+              <a class="dropdown-item" routerLink="/notifications">View all</a>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
