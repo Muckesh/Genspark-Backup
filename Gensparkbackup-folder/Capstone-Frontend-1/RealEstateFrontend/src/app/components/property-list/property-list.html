@@ -1,0 +1,218 @@
+    <div class="container-fluid py-4">
+      <!-- Search and Filter Section -->
+      <div class="filter-section">
+        <form [formGroup]="searchForm">
+          <div class="row g-3">
+            <div class="col-md-4">
+              <div class="form-floating">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="keyword" 
+                  placeholder="Search properties..."
+                  formControlName="keyword">
+                <label for="keyword">Search properties...</label>
+              </div>
+            </div>
+            
+            <div class="col-md-3">
+              <div class="form-floating">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="location" 
+                  placeholder="Location"
+                  formControlName="location">
+                <label for="location">Location</label>
+              </div>
+            </div>
+            
+            <div class="col-md-2">
+              <div class="form-floating">
+                <input 
+                  type="number" 
+                  class="form-control" 
+                  id="minPrice" 
+                  placeholder="Min Price"
+                  formControlName="minPrice">
+                <label for="minPrice">Min Price</label>
+              </div>
+            </div>
+            
+            <div class="col-md-2">
+              <div class="form-floating">
+                <input 
+                  type="number" 
+                  class="form-control" 
+                  id="maxPrice" 
+                  placeholder="Max Price"
+                  formControlName="maxPrice">
+                <label for="maxPrice">Max Price</label>
+              </div>
+            </div>
+            
+            <div class="col-md-1">
+              <button type="button" class="btn btn-outline-secondary w-100 h-100" (click)="clearFilters()">
+                <i class="bi bi-x-circle"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="row g-3 mt-2">
+            <div class="col-md-2">
+              <div class="form-floating">
+                <select class="form-select" id="minBedrooms" formControlName="minBedrooms">
+                  <option value="">Any</option>
+                  <option value="1">1+</option>
+                  <option value="2">2+</option>
+                  <option value="3">3+</option>
+                  <option value="4">4+</option>
+                  <option value="5">5+</option>
+                </select>
+                <label for="minBedrooms">Bedrooms</label>
+              </div>
+            </div>
+            
+            <div class="col-md-2">
+              <div class="form-floating">
+                <select class="form-select" id="minBathrooms" formControlName="minBathrooms">
+                  <option value="">Any</option>
+                  <option value="1">1+</option>
+                  <option value="2">2+</option>
+                  <option value="3">3+</option>
+                  <option value="4">4+</option>
+                </select>
+                <label for="minBathrooms">Bathrooms</label>
+              </div>
+            </div>
+            
+            <div class="col-md-3">
+              <div class="form-floating">
+                <select class="form-select" id="sortBy" formControlName="sortBy">
+                  <option value="">Default</option>
+                  <option value="price">Price: Low to High</option>
+                  <option value="price_desc">Price: High to Low</option>
+                  <option value="bedrooms">Bedrooms</option>
+                  <option value="bathrooms">Bathrooms</option>
+                </select>
+                <label for="sortBy">Sort By</label>
+              </div>
+            </div>
+            
+            <div class="col-md-2">
+              <div class="form-floating">
+                <select class="form-select" id="pageSize" formControlName="pageSize">
+                  <option value="12">12 per page</option>
+                  <option value="24">24 per page</option>
+                  <option value="48">48 per page</option>
+                </select>
+                <label for="pageSize">Results per page</label>
+              </div>
+            </div>
+            
+            <div class="col-md-3">
+              <button type="button" class="btn btn-primary w-100 h-100" (click)="search()">
+                <i class="bi bi-search me-2"></i>Search Properties
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Results Header -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h2 class="h4 fw-bold mb-0">Property Listings</h2>
+          <p class="text-muted mb-0" *ngIf="pagination$ | async as pagination">
+            Showing {{ getResultsText(pagination) }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Loading State -->
+      <div *ngIf="isLoading$ | async" class="text-center py-5">
+        <div class="loading-spinner me-2"></div>
+        Loading properties...
+      </div>
+
+      <!-- Error State -->
+      <div *ngIf="error$ | async as error" class="alert alert-danger" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        {{ error }}
+      </div>
+
+      <!-- Property Grid -->
+      <div class="row g-4" *ngIf="!(isLoading$ | async)">
+        <div class="col-lg-4 col-md-6" *ngFor="let property of properties$ | async">
+          <div class="card property-card h-100">
+            <div class="position-relative">
+              <img 
+                src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                class="card-img-top property-image" 
+                [alt]="property.title"
+                style="height: 250px;">
+              <div class="position-absolute top-0 end-0 m-3">
+                <span class="badge bg-primary">{{ property.bedrooms }} bed</span>
+                <span class="badge bg-secondary ms-1">{{ property.bathrooms }} bath</span>
+              </div>
+            </div>
+            
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{ property.title }}</h5>
+              <p class="card-text text-muted flex-grow-1">{{ property.description | slice:0:100 }}...</p>
+              
+              <div class="mb-3">
+                <div class="price-tag">\${{ property.price | number:'1.0-0' }}</div>
+                <div class="text-muted">
+                  <i class="bi bi-geo-alt me-1"></i>{{ property.location }}
+                </div>
+                <div class="text-muted">
+                  <i class="bi bi-rulers me-1"></i>{{ property.squareFeet | number }} sq ft
+                </div>
+              </div>
+              
+              <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">
+                  <i class="bi bi-calendar me-1"></i>
+                  {{ property.createdAt | date:'shortDate' }}
+                </small>
+                <a [routerLink]="['/properties', property.id]" class="btn btn-primary btn-sm">
+                  View Details
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div *ngIf="!(isLoading$ | async) && (properties$ | async)?.length === 0" class="empty-state">
+        <i class="bi bi-house"></i>
+        <h4>No properties found</h4>
+        <p>Try adjusting your search criteria to find more properties.</p>
+        <button class="btn btn-primary" (click)="clearFilters()">Clear Filters</button>
+      </div>
+
+      <!-- Pagination -->
+      <nav aria-label="Property pagination" *ngIf="pagination$ | async as pagination">
+        <ul class="pagination">
+          <li class="page-item" [class.disabled]="pagination.pageNumber === 1">
+            <button class="page-link" (click)="goToPage(pagination.pageNumber - 1)" [disabled]="pagination.pageNumber === 1">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+          </li>
+          
+          <li class="page-item" 
+              *ngFor="let page of getPageNumbers(pagination)" 
+              [class.active]="page === pagination.pageNumber">
+            <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
+          </li>
+          
+          <li class="page-item" [class.disabled]="pagination.pageNumber === pagination.totalPages">
+            <button class="page-link" (click)="goToPage(pagination.pageNumber + 1)" [disabled]="pagination.pageNumber === pagination.totalPages">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>

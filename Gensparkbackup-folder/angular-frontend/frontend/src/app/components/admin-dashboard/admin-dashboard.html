@@ -1,0 +1,117 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Admin Dashboard</h2>
+
+  <div *ngIf="isLoading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!isLoading && !error">
+    <div class="row mb-4">
+      <div class="col-md-6 col-lg-3 mb-3">
+        <div class="card bg-primary text-white">
+          <div class="card-body">
+            <h5 class="card-title">Total Users</h5>
+            <h2 class="card-text">{{ stats.totalUsers }}</h2>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3 mb-3">
+        <div class="card bg-success text-white">
+          <div class="card-body">
+            <h5 class="card-title">Active Users</h5>
+            <h2 class="card-text">{{ stats.activeUsers }}</h2>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3 mb-3">
+        <div class="card bg-info text-white">
+          <div class="card-body">
+            <h5 class="card-title">Total Properties</h5>
+            <h2 class="card-text">{{ stats.totalProperties }}</h2>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3 mb-3">
+        <div class="card bg-warning text-dark">
+          <div class="card-body">
+            <h5 class="card-title">Active Properties</h5>
+            <h2 class="card-text">{{ stats.activeProperties }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Activity Overview</h5>
+            <div style="height: 300px">
+              <p-chart type="line" [data]="chartData" [options]="chartOptions"></p-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Recent Users</h5>
+            <div class="list-group">
+              <a *ngFor="let user of recentUsers" 
+                 href="#" 
+                 class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <h6 class="mb-1">{{ user.name }}</h6>
+                  <small class="text-muted">{{ user.role }}</small>
+                </div>
+                <p class="mb-1">{{ user.email }}</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Recent Properties</h5>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Location</th>
+                    <th>Price</th>
+                    <th>Agent</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let property of recentProperties">
+                    <td>{{ property.title }}</td>
+                    <td>{{ property.location }}</td>
+                    <td>${{ property.price | number }}</td>
+                    <td>{{ property.agent?.user?.name || 'Unknown' }}</td>
+                    <td>{{ property.createdAt | date:'shortDate' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

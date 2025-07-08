@@ -1,0 +1,198 @@
+{
+  "$id": "1",
+  "pageNumber": 1,
+  "pageSize": 11,
+  "totalCount": 11,
+  "items": {
+    "$id": "2",
+    "$values": [
+      {
+        "$id": "3",
+        "id": "019779c9-32cd-7569-a256-010ee93a1e66",
+        "title": "string",
+        "description": "string",
+        "price": 0,
+        "location": "string",
+        "bedrooms": 0,
+        "bathrooms": 0,
+        "squareFeet": 0,
+        "agentId": "01976596-777e-71da-a3ae-0f7cfee4433f",
+        "imageUrls": {
+          "$id": "4",
+          "$values": []
+        }
+      },
+      {
+        "$id": "5",
+        "id": "0197689e-6b4c-715f-9d8a-7bc7a443dc77",
+        "title": "Modern Family Home in Suburbs",
+        "description": "A spacious and well-lit 4-bedroom home located in a quiet suburban neighborhood. Close to schools and parks.",
+        "price": 450000,
+        "location": "123 Maple Street, Springfield, IL",
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "squareFeet": 4000,
+        "agentId": "0197657b-4d7b-723f-8b6b-63d0ee6ead85",
+        "imageUrls": {
+          "$id": "6",
+          "$values": [
+            "http://localhost:5011/property-images/0197689e-6b4c-715f-9d8a-7bc7a443dc77/0c7f5e04-3732-4e46-ad26-f0470471fadc.jpg",
+            "http://localhost:5011/property-images/0197689e-6b4c-715f-9d8a-7bc7a443dc77/1ee6067d-9ee1-4f0e-bda7-62ced6271721.jpg",
+            "http://localhost:5011/property-images/0197689e-6b4c-715f-9d8a-7bc7a443dc77/0370d258-5f12-479c-af49-24236848386a.jpg"
+          ]
+        }
+      },
+      {
+        "$id": "7",
+        "id": "01977d24-66b8-72f1-8aaf-dba04f1e049a",
+        "title": "Test Home",
+        "description": "Test 3BHK Flat. Close to schools and parks.",
+        "price": 450000,
+        "location": "1 Test Street, Springfield, IL",
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "squareFeet": 2000,
+        "agentId": "0197657b-4d7b-723f-8b6b-63d0ee6ead85",
+        "imageUrls": {
+          "$id": "8",
+          "$values": [
+            "http://localhost:5011/property-images/01977d24-66b8-72f1-8aaf-dba04f1e049a/f6c1fe5b-685a-47ad-94b3-96ff16d79d5a.jpg",
+            "http://localhost:5011/property-images/01977d24-66b8-72f1-8aaf-dba04f1e049a/4cf1ad11-761f-411a-9799-8114353588a6.jpg"
+          ]
+        }
+      },
+      {
+        "$id": "9",
+        "id": "01978ca2-c583-7bf8-a2cb-bc2c06f2695b",
+        "title": "Luxurious Home in City",
+        "description": "A spacious and well-lit 5-bedroom home located in a quiet suburban neighborhood. Close to schools and parks.",
+        "price": 1350000,
+        "location": "24 Maple Street, Springfield, IL",
+        "bedrooms": 5,
+        "bathrooms": 6,
+        "squareFeet": 6000,
+        "agentId": "0197657b-4d7b-723f-8b6b-63d0ee6ead85",
+        "imageUrls": {
+          "$id": "10",
+          "$values": []
+        }
+      },
+      {
+        "$id": "11",
+        "id": "01978ca7-3507-7ef9-9810-6f3af05356b9",
+        "title": "ABC Properties",
+        "description": "A spacious and well-lit 5-bedroom home located in a quiet suburban neighborhood. Close to schools and parks.",
+        "price": 1350000,
+        "location": "24 Maple Street, Springfield, IL",
+        "bedrooms": 5,
+        "bathrooms": 6,
+        "squareFeet": 6000,
+        "agentId": "0197657b-4d7b-723f-8b6b-63d0ee6ead85",
+        "imageUrls": {
+          "$id": "12",
+          "$values": []
+        }
+      },
+      {
+        "$id": "13",
+        "id": "019779d9-2f26-70ca-9cf1-911a0be8a8bd",
+        "title": "1BHK Flat",
+        "description": "Premium flat near anna nagar",
+        "price": 2500000,
+        "location": "Chennai",
+        "bedrooms": 2,
+        "bathrooms": 3,
+        "squareFeet": 2000,
+        "agentId": "01976596-777e-71da-a3ae-0f7cfee4433f",
+        "imageUrls": {
+          "$id": "14",
+          "$values": []
+        }
+      },
+      {
+        "$id": "15",
+        "id": "019779d4-c5b2-756d-a60d-0505ad429ea2",
+        "title": "2BHK Flat",
+        "description": "Premium flat near anna nagar",
+        "price": 6500000,
+        "location": "Chennai",
+        "bedrooms": 2,
+        "bathrooms": 3,
+        "squareFeet": 2000,
+        "agentId": "01976596-777e-71da-a3ae-0f7cfee4433f",
+        "imageUrls": {
+          "$id": "16",
+          "$values": []
+        }
+      },
+      {
+        "$id": "17",
+        "id": "01976587-f675-7462-8cee-1b0b3818f069",
+        "title": "3BHK Flat",
+        "description": "Premium flat near chennai",
+        "price": 7500000,
+        "location": "Chennai",
+        "bedrooms": 3,
+        "bathrooms": 4,
+        "squareFeet": 1800,
+        "agentId": "0197657b-4d7b-723f-8b6b-63d0ee6ead85",
+        "imageUrls": {
+          "$id": "18",
+          "$values": [
+            "http://localhost:5011/property-images/01976587-f675-7462-8cee-1b0b3818f069/9f9baff5-4f6f-44c4-a1e9-efca740f299f.jpg",
+            "http://localhost:5011/property-images/01976587-f675-7462-8cee-1b0b3818f069/31fb85d7-1639-4e79-b121-c77a4275c8b3.jpg",
+            "http://localhost:5011/property-images/01976587-f675-7462-8cee-1b0b3818f069/89fcf6af-872c-4b85-954d-1cd44072813d.jpg"
+          ]
+        }
+      },
+      {
+        "$id": "19",
+        "id": "019779dc-2042-75a5-affe-04b503451ac7",
+        "title": "6BHK Flat",
+        "description": "Premium flat near anna nagar",
+        "price": 32500000,
+        "location": "Chennai",
+        "bedrooms": 2,
+        "bathrooms": 3,
+        "squareFeet": 2000,
+        "agentId": "01976596-777e-71da-a3ae-0f7cfee4433f",
+        "imageUrls": {
+          "$id": "20",
+          "$values": []
+        }
+      },
+      {
+        "$id": "21",
+        "id": "019779d9-ab16-7095-9050-d32b8b8897cc",
+        "title": "8BHK Flat",
+        "description": "Premium flat near anna nagar",
+        "price": 82500000,
+        "location": "Chennai",
+        "bedrooms": 2,
+        "bathrooms": 3,
+        "squareFeet": 2000,
+        "agentId": "01976596-777e-71da-a3ae-0f7cfee4433f",
+        "imageUrls": {
+          "$id": "22",
+          "$values": []
+        }
+      },
+      {
+        "$id": "23",
+        "id": "019779dd-cb3b-7096-aeb6-0aed58a54250",
+        "title": "10BHK Flat",
+        "description": "Premium flat near anna nagar",
+        "price": 332500000,
+        "location": "Chennai",
+        "bedrooms": 2,
+        "bathrooms": 3,
+        "squareFeet": 2000,
+        "agentId": "01976599-ec66-73ce-b483-64c211132f97",
+        "imageUrls": {
+          "$id": "24",
+          "$values": []
+        }
+      }
+    ]
+  }
+}

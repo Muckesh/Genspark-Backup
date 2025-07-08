@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/muckesh/Developer/Genspark-Training/Capstone-1/RealEstateApi/wwwroot/property-images/01976587-f675-7462-8cee-1b0b3818f069/31fb85d7-1639-4e79-b121-c77a4275c8b3.jpg",
+      "PackagePath": "staticwebassets/property-images/01976587-f675-7462-8cee-1b0b3818f069/31fb85d7-1639-4e79-b121-c77a4275c8b3.jpg"
+    },
+    {
+      "Id": "/Users/muckesh/Developer/Genspark-Training/Capstone-1/RealEstateApi/wwwroot/property-images/01976587-f675-7462-8cee-1b0b3818f069/89fcf6af-872c-4b85-954d-1cd44072813d.jpg",
+      "PackagePath": "staticwebassets/property-images/01976587-f675-7462-8cee-1b0b3818f069/89fcf6af-872c-4b85-954d-1cd44072813d.jpg"
+    },
+    {
+      "Id": "/Users/muckesh/Developer/Genspark-Training/Capstone-1/RealEstateApi/wwwroot/property-images/01976587-f675-7462-8cee-1b0b3818f069/9993873c-615c-48c7-9d5e-0d822ad3a1c1.jpg",
+      "PackagePath": "staticwebassets/property-images/01976587-f675-7462-8cee-1b0b3818f069/9993873c-615c-48c7-9d5e-0d822ad3a1c1.jpg"
+    },
+    {
+      "Id": "/Users/muckesh/Developer/Genspark-Training/Capstone-1/RealEstateApi/wwwroot/property-images/01976587-f675-7462-8cee-1b0b3818f069/9f9baff5-4f6f-44c4-a1e9-efca740f299f.jpg",
+      "PackagePath": "staticwebassets/property-images/01976587-f675-7462-8cee-1b0b3818f069/9f9baff5-4f6f-44c4-a1e9-efca740f299f.jpg"
+    },
+    {
+      "Id": "/Users/muckesh/Developer/Genspark-Training/Capstone-1/RealEstateApi/wwwroot/property-images/0197689e-6b4c-715f-9d8a-7bc7a443dc77/0c7f5e04-3732-4e46-ad26-f0470471fadc.jpg",
+      "PackagePath": "staticwebassets/property-images/0197689e-6b4c-715f-9d8a-7bc7a443dc77/0c7f5e04-3732-4e46-ad26-f0470471fadc.jpg"
+    },
+    {
+      "Id": "/Users/muckesh/Developer/Genspark-Training/Capstone-1/RealEstateApi/wwwroot/property-images/0197689e-6b4c-715f-9d8a-7bc7a443dc77/1ee6067d-9ee1-4f0e-bda7-62ced6271721.jpg",
+      "PackagePath": "staticwebassets/property-images/0197689e-6b4c-715f-9d8a-7bc7a443dc77/1ee6067d-9ee1-4f0e-bda7-62ced6271721.jpg"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.RealEstateApi.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.RealEstateApi.props",
+      "PackagePath": "build\\RealEstateApi.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.RealEstateApi.props",
+      "PackagePath": "buildMultiTargeting\\RealEstateApi.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.RealEstateApi.props",
+      "PackagePath": "buildTransitive\\RealEstateApi.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

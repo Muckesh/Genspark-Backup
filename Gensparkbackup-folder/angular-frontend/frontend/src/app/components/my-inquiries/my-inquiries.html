@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <h2 class="mb-4">My Inquiries</h2>
+
+  <div *ngIf="isLoading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!isLoading && !error">
+    <div *ngIf="inquiries.length === 0" class="alert alert-info">
+      You haven't made any inquiries yet.
+    </div>
+
+    <div class="list-group" *ngIf="inquiries.length > 0">
+      <div *ngFor="let inquiry of inquiries" class="list-group-item">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">
+            <a [routerLink]="['/properties', inquiry.listingId]">{{ inquiry.listing?.title || 'Property' }}</a>
+          </h5>
+          <small>{{ inquiry.createdAt | date:'medium' }}</small>
+        </div>
+        <p class="mb-1">{{ inquiry.message }}</p>
+        <small>Agent: {{ inquiry.listing?.agent?.user?.name || 'Unknown' }}</small>
+      </div>
+    </div>
+
+    <div class="mt-4" *ngIf="pagedResult && pagedResult.totalCount > 0">
+      <app-pagination 
+        [totalItems]="pagedResult.totalCount" 
+        [itemsPerPage]="pageSize"
+        [currentPage]="currentPage"
+        (pageChanged)="onPageChange($event)">
+      </app-pagination>
+    </div>
+  </div>
+</div>

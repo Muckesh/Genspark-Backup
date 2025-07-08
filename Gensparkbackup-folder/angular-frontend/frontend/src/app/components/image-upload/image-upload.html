@@ -1,0 +1,34 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-title">Upload Images</h5>
+    
+    <div class="mb-3">
+      <input type="file" class="form-control" (change)="onFileSelected($event)" accept="image/*">
+    </div>
+    
+    <div *ngIf="selectedFile" class="alert alert-info">
+      Selected: {{ selectedFile.name }} ({{ selectedFile.size | fileSize }})
+    </div>
+    
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+    
+    <button 
+      class="btn btn-primary" 
+      (click)="uploadImage()" 
+      [disabled]="!selectedFile || isUploading">
+      <span *ngIf="!isUploading">Upload</span>
+      <span *ngIf="isUploading">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Uploading...
+      </span>
+    </button>
+    
+    <div *ngIf="isUploading" class="mt-2">
+      <div class="progress">
+        <div class="progress-bar" [style.width.%]="progress"></div>
+      </div>
+    </div>
+  </div>
+</div>

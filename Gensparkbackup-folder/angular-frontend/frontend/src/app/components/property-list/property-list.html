@@ -1,0 +1,86 @@
+<div class="container mt-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title">Property Search</h2>
+          
+          <form (submit)="onSearch()" class="row g-3">
+            <div class="col-md-6">
+              <label for="keyword" class="form-label">Keyword</label>
+              <input type="text" class="form-control" id="keyword" 
+                     [(ngModel)]="queryParams.keyword" name="keyword">
+            </div>
+            
+            <div class="col-md-6">
+              <label for="location" class="form-label">Location</label>
+              <input type="text" class="form-control" id="location" 
+                     [(ngModel)]="queryParams.location" name="location">
+            </div>
+            
+            <div class="col-md-3">
+              <label for="minPrice" class="form-label">Min Price</label>
+              <input type="number" class="form-control" id="minPrice" 
+                     [(ngModel)]="queryParams.minPrice" name="minPrice" min="0">
+            </div>
+            
+            <div class="col-md-3">
+              <label for="maxPrice" class="form-label">Max Price</label>
+              <input type="number" class="form-control" id="maxPrice" 
+                     [(ngModel)]="queryParams.maxPrice" name="maxPrice" min="0">
+            </div>
+            
+            <div class="col-md-2">
+              <label for="minBedrooms" class="form-label">Min Bedrooms</label>
+              <input type="number" class="form-control" id="minBedrooms" 
+                     [(ngModel)]="queryParams.minBedrooms" name="minBedrooms" min="0">
+            </div>
+            
+            <div class="col-md-2">
+              <label for="minBathrooms" class="form-label">Min Bathrooms</label>
+              <input type="number" class="form-control" id="minBathrooms" 
+                     [(ngModel)]="queryParams.minBathrooms" name="minBathrooms" min="0">
+            </div>
+            
+            <div class="col-md-2 d-flex align-items-end">
+              <button type="submit" class="btn btn-primary me-2">Search</button>
+              <button type="button" class="btn btn-outline-secondary" (click)="clearFilters()">Clear</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!isLoading && !error">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="col" *ngFor="let property of properties">
+        <app-property [property]="property"></app-property>
+      </div>
+    </div>
+
+    <div class="mt-4" *ngIf="pagedResult && pagedResult.totalCount > 0">
+      <app-pagination 
+        [totalItems]="pagedResult.totalCount" 
+        [itemsPerPage]="queryParams.pageSize"
+        [currentPage]="queryParams.pageNumber"
+        (pageChanged)="onPageChange($event)">
+      </app-pagination>
+    </div>
+
+    <div *ngIf="properties.length === 0" class="text-center my-5">
+      <h4>No properties found</h4>
+      <p>Try adjusting your search criteria</p>
+    </div>
+  </div>
+</div>

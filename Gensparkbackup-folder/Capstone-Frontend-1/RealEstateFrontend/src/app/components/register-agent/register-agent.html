@@ -1,0 +1,140 @@
+    <div class="min-height-100vh d-flex align-items-center justify-content-center bg-light">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0">
+              <div class="card-body p-5">
+                <div class="text-center mb-4">
+                  <h2 class="fw-bold text-primary">Agent Registration</h2>
+                  <p class="text-muted">Create your agent account</p>
+                </div>
+
+                <div *ngIf="authError$ | async as error" class="alert alert-danger" role="alert">
+                  <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                  {{ error }}
+                </div>
+
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <div class="form-floating">
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="name" 
+                          placeholder="Full Name"
+                          formControlName="name"
+                          [class.is-invalid]="isFieldInvalid('name')">
+                        <label for="name">Full Name</label>
+                      </div>
+                      <div *ngIf="isFieldInvalid('name')" class="invalid-feedback">
+                        <div *ngIf="registerForm.get('name')?.errors?.['required']">Name is required</div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                      <div class="form-floating">
+                        <input 
+                          type="email" 
+                          class="form-control" 
+                          id="email" 
+                          placeholder="name@example.com"
+                          formControlName="email"
+                          [class.is-invalid]="isFieldInvalid('email')">
+                        <label for="email">Email Address</label>
+                      </div>
+                      <div *ngIf="isFieldInvalid('email')" class="invalid-feedback">
+                        <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required</div>
+                        <div *ngIf="registerForm.get('email')?.errors?.['email']">Please enter a valid email</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <div class="form-floating">
+                      <input 
+                        type="password" 
+                        class="form-control" 
+                        id="password" 
+                        placeholder="Password"
+                        formControlName="password"
+                        [class.is-invalid]="isFieldInvalid('password')">
+                      <label for="password">Password</label>
+                    </div>
+                    <div *ngIf="isFieldInvalid('password')" class="invalid-feedback">
+                      <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required</div>
+                      <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <div class="form-floating">
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="licenseNumber" 
+                          placeholder="License Number"
+                          formControlName="licenseNumber"
+                          [class.is-invalid]="isFieldInvalid('licenseNumber')">
+                        <label for="licenseNumber">License Number</label>
+                      </div>
+                      <div *ngIf="isFieldInvalid('licenseNumber')" class="invalid-feedback">
+                        <div *ngIf="registerForm.get('licenseNumber')?.errors?.['required']">License number is required</div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                      <div class="form-floating">
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="agencyName" 
+                          placeholder="Agency Name"
+                          formControlName="agencyName"
+                          [class.is-invalid]="isFieldInvalid('agencyName')">
+                        <label for="agencyName">Agency Name</label>
+                      </div>
+                      <div *ngIf="isFieldInvalid('agencyName')" class="invalid-feedback">
+                        <div *ngIf="registerForm.get('agencyName')?.errors?.['required']">Agency name is required</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="form-floating">
+                      <input 
+                        type="tel" 
+                        class="form-control" 
+                        id="phone" 
+                        placeholder="Phone Number"
+                        formControlName="phone"
+                        [class.is-invalid]="isFieldInvalid('phone')">
+                      <label for="phone">Phone Number</label>
+                    </div>
+                    <div *ngIf="isFieldInvalid('phone')" class="invalid-feedback">
+                      <div *ngIf="registerForm.get('phone')?.errors?.['required']">Phone number is required</div>
+                    </div>
+                  </div>
+
+                  <button 
+                    type="submit" 
+                    class="btn btn-primary w-100 mb-3"
+                    [disabled]="registerForm.invalid || (isLoading$ | async)">
+                    <span *ngIf="isLoading$ | async" class="loading-spinner me-2"></span>
+                    <span *ngIf="!(isLoading$ | async)">Create Agent Account</span>
+                    <span *ngIf="isLoading$ | async">Creating Account...</span>
+                  </button>
+                </form>
+
+                <div class="text-center">
+                  <p class="mb-0">Already have an account? 
+                    <a routerLink="/login" class="text-primary text-decoration-none">Sign in</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
